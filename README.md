@@ -1,57 +1,86 @@
-# React + TypeScript + Vite
+# Plataforma EAD - Personal Knowledge Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma plataforma de ensino a distância (EAD) moderna, desenvolvida para oferecer uma experiência de aprendizado fluida para estudantes e uma gestão eficiente para administradores. O projeto utiliza tecnologias de ponta para garantir performance, escalabilidade e uma interface intuitiva.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto foi construído com as seguintes tecnologias:
 
-## Expanding the ESLint configuration
+- **[React](https://reactjs.org/)** - Biblioteca principal para a interface.
+- **[TypeScript](https://www.typescriptlang.org/)** - Tipagem estática para maior segurança e produtividade.
+- **[Vite](https://vitejs.dev/)** - Build tool ultra-rápida para desenvolvimento frontend.
+- **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utilitário para estilização moderna e responsiva.
+- **[Zustand](https://github.com/pmndrs/zustand)** - Gerenciamento de estado leve e eficiente.
+- **[Lucide React](https://lucide.dev/)** - Conjunto de ícones bonitos e consistentes.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📋 Funcionalidades
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Área do Aluno
+- **Dashboard Personalizado:** Visualização do progresso nos cursos.
+- **Catálogo de Cursos:** Listagem de cursos disponíveis.
+- **Ambiente de Aula:** Interface otimizada para assistir vídeos e acessar módulos.
+
+### Área do Administrador
+- **Gestão de Alunos:** Controle total sobre os usuários da plataforma.
+- **Gestão de Conteúdo:** Criação e edição de cursos, módulos e lições.
+- **Métricas:** Dashboard com dados sobre o engajamento e progresso geral.
+
+## 📁 Estrutura do Projeto
+
+```text
+src/
+├── assets/      # Ativos estáticos (imagens, svgs)
+├── components/  # Componentes reutilizáveis (Layouts, UI)
+├── hooks/       # Hooks customizados (ex: useTheme)
+├── lib/         # Utilitários e configurações de bibliotecas
+├── pages/       # Páginas da aplicação (Admin e Student)
+├── store/       # Gerenciamento de estado com Zustand
+├── styles/      # Arquivos de estilo e configurações Tailwind
+└── types/       # Definições de interfaces TypeScript
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Como Executar o Projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Pré-requisitos
+- Node.js (versão 18 ou superior)
+- npm ou pnpm
 
-export default tseslint.config({
-  extends: [
-    // other configs...
-    // Enable lint rules for React
-    reactX.configs['recommended-typescript'],
-    // Enable lint rules for React DOM
-    reactDom.configs.recommended,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/charlesdesplanches18-ops/projeto-ead-plataforma.git
+   ```
+
+2. Entre na pasta do projeto:
+   ```bash
+   cd projeto-ead-plataforma
+   ```
+
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+### Desenvolvimento
+
+Para rodar o projeto em modo de desenvolvimento:
+```bash
+npm run dev
 ```
+O projeto estará disponível em `http://localhost:5173`.
+
+### Build para Produção
+
+Para gerar a versão final do projeto:
+```bash
+npm run build
+```
+Os arquivos otimizados serão gerados na pasta `dist/`.
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+Desenvolvido com ❤️ para uma experiência educacional superior.
