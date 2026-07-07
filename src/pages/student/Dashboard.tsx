@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useStore } from '../../store/useStore';
-import { BookOpen, CheckCircle, Clock } from 'lucide-react';
+import { BookOpen, CheckCircle, Clock, TrendingUp, Target, Award } from 'lucide-react';
 
 export const StudentDashboard = () => {
   const { currentUser, courses, progress, modules } = useStore();
@@ -24,22 +24,72 @@ export const StudentDashboard = () => {
     return Math.round((courseProgress.completedModuleIds.length / courseModules.length) * 100);
   };
 
+  // Calcular progresso total
+  const totalProgress = myCourses.length > 0 
+    ? Math.round(myCourses.reduce((sum, course) => sum + getCourseProgress(course.id), 0) / myCourses.length)
+    : 0;
+
+  // Calcular módulos completados
+  const completedModulesCount = myProgress.reduce((sum, p) => sum + p.completedModuleIds.length, 0);
+  const totalModulesCount = myCourses.reduce((sum, course) => {
+    return sum + modules.filter(m => m.courseId === course.id).length;
+  }, 0);
+
   return (
     <div className="space-y-6">
       {/* Institutional Banner */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
-        <div className="absolute inset-0 bg-green-700 opacity-90"></div>
-        <div className="relative z-10 p-8 md:p-12 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="max-w-2xl text-white">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">Portal do Aluno JS Treinamentos</h1>
-            <p className="text-lg md:text-xl text-green-50">
-              Treinamento profissional para operadores de máquinas pesadas, equipamentos industriais e segurança do trabalho.
-            </p>
+      <div className="bg-gradient-to-r from-green-700 to-green-600 rounded-xl shadow-md overflow-hidden relative">
+        <div className="relative z-10 p-8 md:p-12 text-white">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="max-w-2xl">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">Bem-vindo, {currentUser.name}!</h1>
+              <p className="text-lg text-green-50 mb-4">
+                Portal do Aluno - JS Treinamentos
+              </p>
+              <p className="text-green-100 text-sm md:text-base">
+                Treinamento profissional para operadores de máquinas pesadas, equipamentos industriais e segurança do trabalho.
+              </p>
+            </div>
+            <div className="hidden md:flex bg-white bg-opacity-95 p-6 rounded-xl shadow-lg items-center justify-center flex-col">
+              <BookOpen className="h-12 w-12 text-green-600 mb-2" />
+              <span className="font-bold text-xl uppercase tracking-tight text-gray-900 text-center">JS</span>
+            </div>
           </div>
-          <div className="hidden md:flex bg-white p-6 rounded-xl shadow-lg items-center justify-center flex-col">
-            <BookOpen className="h-12 w-12 text-green-600 mb-2" />
-            <span className="font-bold text-xl uppercase tracking-tight text-gray-900 text-center">JS Treinamentos</span>
+        </div>
+      </div>
+
+      {/* Cards de Progresso */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <TrendingUp className="h-6 w-6 text-green-600" />
+            <span className="text-2xl font-bold text-green-600">{totalProgress}%</span>
           </div>
+          <p className="text-sm font-medium text-gray-600">Progresso Geral</p>
+          <div className="mt-4 w-full bg-gray-200 rounded-full h-2">
+            <div 
+              className="bg-green-600 h-2 rounded-full transition-all duration-500"
+              style={{ width: `${totalProgress}%` }}
+            ></div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <CheckCircle className="h-6 w-6 text-blue-600" />
+            <span className="text-2xl font-bold text-blue-600">{completedModulesCount}</span>
+          </div>
+          <p className="text-sm font-medium text-gray-600">Aulas Concluídas</p>
+          <p className="text-xs text-gray-500 mt-2">de {totalModulesCount} aulas no total</p>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <Target className="h-6 w-6 text-purple-600" />
+            <span className="text-2xl font-bold text-purple-600">{myCourses.length}</span>
+          </div>
+          <p className="text-sm font-medium text-gray-600">Cursos em Andamento</p>
+          <p className="text-xs text-gray-500 mt-2">Matriculado e estudando</p>
         </div>
       </div>
 
