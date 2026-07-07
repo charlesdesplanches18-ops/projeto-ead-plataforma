@@ -105,7 +105,7 @@ export const Login = () => {
           
           <div className="mt-6 text-center text-sm text-gray-500">
             <p>Precisa de acesso? Fale com seu instrutor.</p>
-            <p className="mt-2 text-xs">Acessos de teste: admin/123 ou joao/123</p>
+            <p className="mt-2 text-xs">Admin: 1234 / 123 | Aluno: 123 / 1234</p>
           </div>
         </div>
       </div>

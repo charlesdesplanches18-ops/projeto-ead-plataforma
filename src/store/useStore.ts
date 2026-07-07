@@ -33,8 +33,8 @@ interface StoreState {
 }
 
 const initialUsers: User[] = [
-  { id: '1', name: 'Administrador', phone: '000000000', username: 'admin', role: 'ADMIN', password: '123' },
-  { id: '2', name: 'João Silva', phone: '11999999999', username: 'joao', role: 'STUDENT', password: '123', courseId: 'c2' },
+  { id: '1', name: 'Administrador', phone: '000000000', username: '1234', role: 'ADMIN', password: '123' },
+  { id: '2', name: 'Aluno Teste', phone: '11999999999', username: '123', role: 'STUDENT', password: '1234', courseId: 'c2' },
 ];
 
 const initialCourses: Course[] = [
